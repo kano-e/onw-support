@@ -1,5 +1,5 @@
 h1 { font-size: 100%; }
-div { padding: 40px 25px; font-family: "ヒラギノ丸ゴ ProN W4", "Hiragino Maru Gothic ProN", "メイリオ", Meiryo, fantasy; }
+div { padding: 40px 25px; font-family: Arial, Roboto, “Droid Sans”, “游ゴシック”, YuGothic, “ヒラギノ角ゴ ProN W3″, “Hiragino Kaku Gothic ProN”, “メイリオ”, Meiryo, sans-serif; }
 .header { color: #efefef; background: #051566; padding: 5px 25px; }
 .gettingDark { background: #112266; text-align: center; }
 #gettingDarkButton { color: #efefef; background: #3366cc; }
