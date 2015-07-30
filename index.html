@@ -4,16 +4,20 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ワンナイト人狼 サポートツール</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link href="main.css" media="all" rel="stylesheet" />
   </head>
 
   <body>
-    <h1>ワンナイト人狼 サポートツール</h1>
-
-    <div>
-      <p><button id="speechTest">夜になります</button></p>
+    <div class="header">
+      <h1>ワンナイト人狼 サポートツール</h1>
     </div>
 
-    <div>
+    <div class="gettingDark">
+      <button class="button-xlarge pure-button" id="gettingDarkButton">夜になります</button>
+    </div>
+
+    <div class="detail">
       <p><a href="http://1nite-jinro.strikingly.com/">ワンナイト人狼</a>を遊んでいて、</p>
       <ul>
         <li>マスターが狼になって顔を上げたら、声の響きで正体がバレてしまった</li>
@@ -27,7 +31,8 @@
       iOS Safari でしか動作確認していません。</p>
     </div>
 
-    <div>
+    <div class="footer">
+      <p>オススメ</p>
       <p>
       <a href="http://www.amazon.co.jp/gp/product/B00DS4125C/ref=as_li_tf_il?ie=UTF8&camp=247&creative=1211&creativeASIN=B00DS4125C&linkCode=as2&tag=onw-support-22"><img border="0" src="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00DS4125C&Format=_SL110_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=onw-support-22" ></a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=onw-support-22&l=as2&o=9&a=B00DS4125C" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
       <a href="http://www.amazon.co.jp/gp/product/B00Q2GME6Y/ref=as_li_tf_il?ie=UTF8&camp=247&creative=1211&creativeASIN=B00Q2GME6Y&linkCode=as2&tag=onw-support-22"><img border="0" src="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00Q2GME6Y&Format=_SL110_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=onw-support-22" ></a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=onw-support-22&l=as2&o=9&a=B00Q2GME6Y" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
@@ -36,7 +41,7 @@
     </div>
 
     <script>
-        var btn = document.getElementById('speechTest');
+        var btn = document.getElementById('gettingDarkButton');
 
         var buildSynthesJP = function(text) {
           var synthes = new SpeechSynthesisUtterance(text);
