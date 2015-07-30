@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>test</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ワンナイト人狼 サポートツール</title>
   </head>
 
   <body>
-    <button id="speechTest">夜になります</button>
+    <h1>ワンナイト人狼 サポートツール</h1>
+
+    <div>
+      <p><button id="speechTest">夜になります</button></p>
+    </div>
+
+    <div>
+      <p><a href="http://1nite-jinro.strikingly.com/">ワンナイト人狼</a>を遊んでいて、</p>
+      <ul>
+        <li>マスターが狼になって顔を上げたら、声の響きで正体がバレてしまった</li>
+        <li>マスターが声を出すタイミングに気をとられて、占い師や怪盗の仕事に集中できない</li>
+      </ul>
+      <p>こんなこまった事態があったので、サポートツールを作りました。</p>
+
+      <p>「夜になります」ボタンを押すと、自動で文章を読み上げ始めますので、後は指示に従ってください。</p>
+
+      <p>Web Speech API を利用しています。<br/>
+      iOS Safari でしか動作確認していません。</p>
+    </div>
+
     <script>
         var btn = document.getElementById('speechTest');
 
