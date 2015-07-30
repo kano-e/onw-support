@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <title>test</title>
+  </head>
+
+  <body>
+    <button id="speechTest">夜になります</button>
+    <script>
+        var btn = document.getElementById('speechTest');
+
+        var buildSynthesJP = function(text) {
+          var synthes = new SpeechSynthesisUtterance(text);
+          synthes.lang = "ja-JP"
+          synthes.rate = 0.5;
+          synthes.pitch = 1;
+          return synthes;
+        };
+
+        var speakJP = function(text) {
+          speechSynthesis.speak(buildSynthesJP(text));
+        };
+
+        var scenario = [
+          [ 10000, '夜になりました。みなさん、顔を伏せて机を軽く叩いてください。' ],
+          [ 10000, '占い師の方、占い師の方。顔をあげて、誰か一人の正体を占ってください。' ],
+          [ 1500, 'いち' ],
+          [ 1500, 'にい' ],
+          [ 1500, 'さん' ],
+          [ 1500, 'よん' ],
+          [ 1500, 'ごお' ],
+          [ 1500, 'ろく' ],
+          [ 1500, 'なな' ],
+          [ 1500, 'はち' ],
+          [ 1500, 'きゅう' ],
+          [ 1500, 'じゅう' ],
+          [ 8000, '占い師の方、顔を伏せてください。' ],
+          [ 10000, '狼の方、狼の方。スパイの方、スパイの方。顔をあげて、仲間を確認してください。' ],
+          [ 1500, 'いち' ],
+          [ 1500, 'にい' ],
+          [ 1500, 'さん' ],
+          [ 1500, 'よん' ],
+          [ 1500, 'ごお' ],
+          [ 1500, 'ろく' ],
+          [ 1500, 'なな' ],
+          [ 1500, 'はち' ],
+          [ 1500, 'きゅう' ],
+          [ 1500, 'じゅう' ],
+          [ 8000, 'みなさん、顔を伏せてください。' ],
+          [ 10000, '怪盗の方、怪盗の方。誰かと正体を交換してください。交換しなくても良いです。' ],
+          [ 1500, 'いち' ],
+          [ 1500, 'にい' ],
+          [ 1500, 'さん' ],
+          [ 1500, 'よん' ],
+          [ 1500, 'ごお' ],
+          [ 1500, 'ろく' ],
+          [ 1500, 'なな' ],
+          [ 1500, 'はち' ],
+          [ 1500, 'きゅう' ],
+          [ 1500, 'じゅう' ],
+          [ 8000, '怪盗の方、顔を伏せてください。' ],
+          [ 8000, '朝になりました。みなさん、目覚めて顔をあげましょう。' ]
+        ];
+
+        var nextSpeech = function(i) {
+          if (scenario[i] == undefined) return;
+
+          var time = scenario[i][0];
+          var text = scenario[i][1];
+          speakJP(text);
+
+          setTimeout(function(i) {
+            nextSpeech(i + 1);
+          }, time, i);
+        }
+
+        btn.addEventListener('click', function() {
+          setTimeout(function() { nextSpeech(0); }, 1000);
+        }, false);
+    </script>
+  </body>
+</html>
