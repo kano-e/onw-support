@@ -1,7 +1,8 @@
 h1 { font-size: 100%; text-align: center; }
 div { padding: 40px 25px; font-family: Arial, Roboto, “Droid Sans”, “游ゴシック”, YuGothic, “ヒラギノ角ゴ ProN W3″, “Hiragino Kaku Gothic ProN”, “メイリオ”, Meiryo, sans-serif; }
 .header { color: #efefef; background: #051566; padding: 5px 25px; }
-.gettingDark { background: #112266; text-align: center; }
+.gettingDark { color: #efefef; background: #112266; text-align: center; }
+#countupSelect { color: #112266; background: #efefef; }
 #gettingDarkButton { color: #efefef; background: #3366cc; }
 .footer { text-align: center; }
 
