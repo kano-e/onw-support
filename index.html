@@ -14,7 +14,20 @@
     </div>
 
     <div class="gettingDark">
-      <button class="button-xlarge pure-button" id="gettingDarkButton">夜になります</button>
+      <form class="pure-form">
+        <p>
+          <label>カウント</label>
+          <select id="countupSelect">
+            <option>1</option>
+            <option selected="selected">3</option>
+            <option>5</option>
+            <option>8</option>
+            <option>10</option>
+          </select>
+        </p>
+
+        <button class="button-xlarge pure-button" id="gettingDarkButton">夜になります</button>
+      </form>
     </div>
 
     <div class="detail">
@@ -138,10 +151,11 @@
           return scenario;
         };
 
-        btn.addEventListener('click', function() {
-          var countup = 5;
+        btn.addEventListener('click', function(event) {
+          var countup = Number(document.getElementById('countupSelect').value);
           var scenario = buildScenario(countup);
           setTimeout(function() { nextSpeech(scenario, 0); }, 500);
+          event.preventDefault();
         }, false);
     </script>
 
