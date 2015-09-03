@@ -55,48 +55,52 @@
           speechSynthesis.speak(buildSynthesJP(text));
         };
 
-        var scenario = [
-          [ 10000, '夜になりました。みなさん、顔を伏せて机を軽く叩いてください。' ],
-          [ 10000, '占い師の方、占い師の方。顔をあげて、誰か一人の正体を占ってください。' ],
-          [ 1500, 'いち' ],
-          [ 1500, 'にい' ],
-          [ 1500, 'さん' ],
-          [ 1500, 'よん' ],
-          [ 1500, 'ごお' ],
-          [ 1500, 'ろく' ],
-          [ 1500, 'なな' ],
-          [ 1500, 'はち' ],
-          [ 1500, 'きゅう' ],
-          [ 1500, 'じゅう' ],
-          [ 8000, '占い師の方、顔を伏せてください。' ],
-          [ 10000, '狼の方、狼の方。スパイの方、スパイの方。顔をあげて、仲間を確認してください。' ],
-          [ 1500, 'いち' ],
-          [ 1500, 'にい' ],
-          [ 1500, 'さん' ],
-          [ 1500, 'よん' ],
-          [ 1500, 'ごお' ],
-          [ 1500, 'ろく' ],
-          [ 1500, 'なな' ],
-          [ 1500, 'はち' ],
-          [ 1500, 'きゅう' ],
-          [ 1500, 'じゅう' ],
-          [ 8000, 'みなさん、顔を伏せてください。' ],
-          [ 10000, '怪盗の方、怪盗の方。誰かと正体を交換してください。交換後のカードの確認のを忘れないようにしてください。' ],
-          [ 1500, 'いち' ],
-          [ 1500, 'にい' ],
-          [ 1500, 'さん' ],
-          [ 1500, 'よん' ],
-          [ 1500, 'ごお' ],
-          [ 1500, 'ろく' ],
-          [ 1500, 'なな' ],
-          [ 1500, 'はち' ],
-          [ 1500, 'きゅう' ],
-          [ 1500, 'じゅう' ],
-          [ 8000, '怪盗の方、顔を伏せてください。' ],
-          [ 8000, '朝になりました。みなさん、目覚めて顔をあげましょう。' ]
-        ];
+        var seeds = {
+          start: [
+            [ 10000, '夜になりました。みなさん、顔を伏せて机を軽く叩いてください。' ]
+          ],
+          fortuneteller: {
+            start: [
+              [ 10000, '占い師の方、占い師の方。顔をあげて、誰か一人の正体を占ってください。' ]
+            ],
+            finish: [
+              [ 8000, '占い師の方、顔を伏せてください。' ]
+            ]
+          },
+          wolf: {
+            start: [
+              [ 10000, '狼の方、狼の方。スパイの方、スパイの方。顔をあげて、仲間を確認してください。' ]
+            ],
+            finish: [
+              [ 8000, 'みなさん、顔を伏せてください。' ]
+            ]
+          },
+          thief: {
+            start: [
+              [ 10000, '怪盗の方、怪盗の方。誰かと正体を交換してください。交換後のカードの確認のを忘れないようにしてください。' ]
+            ],
+            finish: [
+              [ 8000, '怪盗の方、顔を伏せてください。' ]
+            ]
+          },
+          finish: [
+            [ 8000, '朝になりました。みなさん、目覚めて顔をあげましょう。' ]
+          ],
+          countup: [
+            [ 1500, 'いち' ],
+            [ 1500, 'にい' ],
+            [ 1500, 'さん' ],
+            [ 1500, 'よん' ],
+            [ 1500, 'ごお' ],
+            [ 1500, 'ろく' ],
+            [ 1500, 'なな' ],
+            [ 1500, 'はち' ],
+            [ 1500, 'きゅう' ],
+            [ 1500, 'じゅう' ],
+          ]
+        };
 
-        var nextSpeech = function(i) {
+        var nextSpeech = function(scenario, i) {
           if (scenario[i] == undefined) return;
 
           var time = scenario[i][0];
@@ -104,12 +108,40 @@
           speakJP(text);
 
           setTimeout(function(i) {
-            nextSpeech(i + 1);
+            nextSpeech(scenario, i + 1);
           }, time, i);
-        }
+        };
+
+        var buildScenario = function(countup) {
+          var scenario = [];
+          var push = Array.prototype.push;
+          push.apply(scenario, seeds['start']);
+          if (countup > 10) countup = 10;
+
+          if (countup <= 0) push.apply(scenario, [[8000, 'カウントは行いません。']]);
+          else push.apply(scenario, [[8000, 'カウントは、' + countup + 'までです。']]);
+
+          push.apply(scenario, seeds['fortuneteller']['start']);
+          push.apply(scenario, seeds['countup'].slice(0, countup));
+          push.apply(scenario, seeds['fortuneteller']['finish']);
+
+          push.apply(scenario, seeds['wolf']['start']);
+          push.apply(scenario, seeds['countup'].slice(0, countup));
+          push.apply(scenario, seeds['wolf']['finish']);
+
+          push.apply(scenario, seeds['thief']['start']);
+          push.apply(scenario, seeds['countup'].slice(0, countup));
+          push.apply(scenario, seeds['thief']['finish']);
+
+          push.apply(scenario, seeds['finish']);
+
+          return scenario;
+        };
 
         btn.addEventListener('click', function() {
-          setTimeout(function() { nextSpeech(0); }, 1000);
+          var countup = 5;
+          var scenario = buildScenario(countup);
+          setTimeout(function() { nextSpeech(scenario, 0); }, 500);
         }, false);
     </script>
 
