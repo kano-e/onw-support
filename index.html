@@ -18,9 +18,8 @@
         <p>
           <label>カウント</label>
           <select id="countupSelect">
-            <option>3</option>
-            <option selected="selected">5</option>
-            <option>8</option>
+            <option>5</option>
+            <option selected="selected">8</option>
             <option>10</option>
           </select>
         </p>
@@ -50,6 +49,15 @@
       <a href="http://www.amazon.co.jp/gp/product/B00Q2GME6Y/ref=as_li_tf_il?ie=UTF8&camp=247&creative=1211&creativeASIN=B00Q2GME6Y&linkCode=as2&tag=onw-support-22"><img border="0" src="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00Q2GME6Y&Format=_SL110_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=onw-support-22" ></a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=onw-support-22&l=as2&o=9&a=B00Q2GME6Y" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
       </p>
       <p><a type="amzn" search="ワンナイト人狼">ワンナイト人狼</a></p>
+
+      <p>
+      ワンナイト人狼の iPhone アプリはカードがなくても遊べて、進行も自動なので、困ったことにはならないですね。<br/>
+      <a href="https://geo.itunes.apple.com/jp/app/wannaito-ren-langwo-zui-di3renno/id886948262?mt=8" style="display:inline-block;overflow:hidden;background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_appstore-lrg.svg) no-repeat;width:165px;height:40px;"></a>
+      </p>
+      <p>
+      でも、顔を上げてカードをめくったり入れ替えたりしたいんです。<br/>
+      「カードの向きが変わってる」とか「隣の人が動いた」とか言えるのが対面人狼の面白いところかなーと思ってます。
+      </p>
     </div>
 
     <script>
@@ -58,7 +66,7 @@
         var buildSynthesJP = function(text) {
           var synthes = new SpeechSynthesisUtterance(text);
           synthes.lang = "ja-JP"
-          synthes.rate = 0.5;
+          synthes.rate = 1.1;
           synthes.pitch = 1;
           return synthes;
         };
@@ -69,14 +77,14 @@
 
         var seeds = {
           start: [
-            [ 5000, '夜になりました。みなさん、顔を伏せて机を軽く叩いてください。' ]
+            [ 4000, '夜になりました。みなさん、顔を伏せて机を軽く叩いてください。' ]
           ],
           fortuneteller: {
             start: [
               [ 8000, '占い師の方、占い師の方。顔をあげて、誰か一人の正体を占ってください。' ]
             ],
             finish: [
-              [ 8000, '占い師の方、顔を伏せてください。' ]
+              [ 6000, '占い師の方、顔を伏せてください。' ]
             ]
           },
           wolf: {
@@ -84,7 +92,7 @@
               [ 8000, '狼の方、狼の方。スパイの方、スパイの方。顔をあげて、仲間を確認してください。' ]
             ],
             finish: [
-              [ 8000, 'みなさん、顔を伏せてください。' ]
+              [ 6000, 'みなさん、顔を伏せてください。' ]
             ]
           },
           thief: {
@@ -92,11 +100,11 @@
               [ 8000, '怪盗の方、怪盗の方。誰かと正体を交換してください。交換後のカードの確認を忘れないようにしてください。' ]
             ],
             finish: [
-              [ 8000, '怪盗の方、顔を伏せてください。' ]
+              [ 6000, '怪盗の方、顔を伏せてください。' ]
             ]
           },
           finish: [
-            [ 8000, '朝になりました。みなさん、目覚めて顔をあげましょう。' ]
+            [ 4000, '朝になりました。みなさん、目覚めて顔をあげましょう。' ]
           ],
           countup: [
             [ 1500, 'いち' ],
