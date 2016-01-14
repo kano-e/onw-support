@@ -18,9 +18,8 @@
         <p>
           <label>カウント</label>
           <select id="countupSelect">
-            <option>3</option>
-            <option selected="selected">5</option>
-            <option>8</option>
+            <option>5</option>
+            <option selected="selected">8</option>
             <option>10</option>
           </select>
         </p>
@@ -58,7 +57,7 @@
         var buildSynthesJP = function(text) {
           var synthes = new SpeechSynthesisUtterance(text);
           synthes.lang = "ja-JP"
-          synthes.rate = 0.5;
+          synthes.rate = 1.1;
           synthes.pitch = 1;
           return synthes;
         };
@@ -69,14 +68,14 @@
 
         var seeds = {
           start: [
-            [ 5000, '夜になりました。みなさん、顔を伏せて机を軽く叩いてください。' ]
+            [ 4000, '夜になりました。みなさん、顔を伏せて机を軽く叩いてください。' ]
           ],
           fortuneteller: {
             start: [
               [ 8000, '占い師の方、占い師の方。顔をあげて、誰か一人の正体を占ってください。' ]
             ],
             finish: [
-              [ 8000, '占い師の方、顔を伏せてください。' ]
+              [ 6000, '占い師の方、顔を伏せてください。' ]
             ]
           },
           wolf: {
@@ -84,7 +83,7 @@
               [ 8000, '狼の方、狼の方。スパイの方、スパイの方。顔をあげて、仲間を確認してください。' ]
             ],
             finish: [
-              [ 8000, 'みなさん、顔を伏せてください。' ]
+              [ 6000, 'みなさん、顔を伏せてください。' ]
             ]
           },
           thief: {
@@ -92,11 +91,11 @@
               [ 8000, '怪盗の方、怪盗の方。誰かと正体を交換してください。交換後のカードの確認を忘れないようにしてください。' ]
             ],
             finish: [
-              [ 8000, '怪盗の方、顔を伏せてください。' ]
+              [ 6000, '怪盗の方、顔を伏せてください。' ]
             ]
           },
           finish: [
-            [ 8000, '朝になりました。みなさん、目覚めて顔をあげましょう。' ]
+            [ 4000, '朝になりました。みなさん、目覚めて顔をあげましょう。' ]
           ],
           countup: [
             [ 1500, 'いち' ],
