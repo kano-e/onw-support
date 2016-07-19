@@ -205,7 +205,7 @@
           var countup = Number(document.getElementById('countupSelect').value);
           var cards = getCards();
           var scenario = buildScenario(countup, cards);
-          //setTimeout(function() { nextSpeech(scenario, 0); }, 1000);
+          setTimeout(function() { nextSpeech(scenario, 0); }, 1000);
           event.preventDefault();
         }, false);
     </script>
