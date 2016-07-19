@@ -149,6 +149,7 @@
         var nextSpeech = function(scenario, i) {
           if (scenario[i] == undefined) return;
 
+          console.log(scenario[i]);
           var time = scenario[i][0];
           var text = scenario[i][1];
           speakJP(text);
@@ -176,8 +177,8 @@
           push.apply(scenario, seeds['afterDark']);
           if (countup > 10) countup = 10;
 
-          if (countup <= 0) push.apply(scenario, [[8000, 'カウントは行いません。']]);
-          else push.apply(scenario, [[8000, 'カウントは、' + countup + 'までです。']]);
+          if (countup <= 0) push.apply(scenario, [[2000, 'カウントは行いません。']]);
+          else push.apply(scenario, [[2000, 'カウントは、' + countup + 'までです。']]);
 
           for (i = 0; i < allCards.length; i++) {
             var card = allCards[i];
@@ -196,15 +197,18 @@
         var getCards = function() {
           var inputs = document.querySelectorAll('input[type=checkbox][name=cards]:checked');
           var cards = [];
-          var cardsLen = cards.length;
-          for (i=0; i <= cardsLen; i++) cards.push(inputs[i].value);
+          var cardsLen = inputs.length;
+          console.log(cardsLen);
+          for (i=0; i < cardsLen; i++) cards.push(inputs[i].value);
           return cards;
         }
 
         btn.addEventListener('click', function(event) {
           var countup = Number(document.getElementById('countupSelect').value);
           var cards = getCards();
+          console.log(cards);
           var scenario = buildScenario(countup, cards);
+          console.log(scenario);
           setTimeout(function() { nextSpeech(scenario, 0); }, 1000);
           event.preventDefault();
         }, false);
