@@ -36,8 +36,9 @@
           <label>カウント</label>
           <select id="countupSelect">
             <option>5</option>
-            <option selected="selected">8</option>
-            <option>10</option>
+            <option>8</option>
+            <option selected="selected">10</option>
+            <option>12</option>
           </select>
         </p>
 
@@ -107,19 +108,19 @@
           ],
 
           gjHunter: [
-            [ 8000, 'グッジョブハンターは目を覚まし、墓地にあるカードを1枚選んで、ハントしてください。中身は見ません。' ]
+            [ 6000, 'グッジョブ、ハンターは目を覚まし、墓地にあるカードを1枚選んで、ハントしてください。中身は見ません。' ]
           ],
           lilWitch: [
             [ 4000, '魔女っこは目を覚まし、誰か一人を選び占ってください。墓地は選べません。' ]
           ],
           wolfKing: [
-            [ 6000, 'おおおおかみは目を覚まし、仲間をみつけ、墓地のカードをすべて確認してください。' ]
+            [ 4000, 'おおおおかみは目を覚まし、仲間をみつけ、墓地のカードをすべて確認してください。' ]
           ],
           zombie: [
-            [ 8000, 'ゾンビは目を覚まし、墓地のカードを一枚選び、自分のカードを捨ててください。新しいカードを確認して、その役割の仕事を行って下さい。' ]
+            [ 6000, 'ゾンビは目を覚まし、墓地のカードを一枚選び、自分のカードを捨ててください。新しいカードを確認して、その役割の仕事を行って下さい。' ]
           ],
           vampire: [
-            [ 8000, '吸血鬼は目を覚まし、自分のカードとほかのカードを交換してください。交換したカードの内容を忘れずに確認してください。' ]
+            [ 6000, '吸血鬼は目を覚まし、自分のカードとほかのカードを交換してください。交換したカードの内容を忘れずに確認してください。' ]
           ],
 
           finish: [
@@ -176,8 +177,8 @@
           push.apply(scenario, seeds['afterDark']);
           if (countup > 10) countup = 10;
 
-          if (countup <= 0) push.apply(scenario, [[3000, 'カウントは行いません。']]);
-          else push.apply(scenario, [[3000, 'カウントは、' + countup + 'までです。']]);
+          if (countup <= 0) push.apply(scenario, [[5000, 'カウントは行いません。']]);
+          else push.apply(scenario, [[5000, 'カウントは、' + countup + 'までです。']]);
 
           for (i = 0; i < allCards.length; i++) {
             var card = allCards[i];
