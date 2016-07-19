@@ -14,10 +14,28 @@
     </div>
 
     <div class="gettingDark">
-      <form class="pure-form">
+      <form class="pure-form" name="gettingDarkForm">
+        <fieldset>
+          <strong>ノーマル:</strong>
+          <label for="cards-seer"><input type="checkbox" id="cards-seer" name="cards" value="seer" /> 占い師(墓地も選べる)</label>
+          <label for="cards-seer-same-witch"><input type="checkbox" id="cards-seer-same-witch" name="cards" value="seerSameWitch" /> 占い師(墓地を選べない)</label>
+          <label for="cards-werewolf"><input type="checkbox" id="cards-werewolf" name="cards" value="werewolf" /> 人狼</label>
+          <label for="cards-phantom-thief"><input type="checkbox" id="cards-phantom-thief" name="cards" value="phantomThief" /> 怪盗</label>
+        </fieldset>
+
+        <fieldset>
+          <strong>モンスターver:</strong>
+          <label for="cards-gj-hunter"><input type="checkbox" id="cards-gj-hunter" name="cards" value="gjHunter" /> GJハンター</label>
+          <label for="cards-lil-witch"><input type="checkbox" id="cards-lil-witch" name="cards" value="lilWitch" /> 魔女っこ</label>
+          <label for="cards-wolf-king"><input type="checkbox" id="cards-wolf-king" name="cards" value="wolfKing" /> 大狼</label>
+          <label for="cards-zombie"><input type="checkbox" id="cards-zombie" name="cards" value="zombie" /> ゾンビ</label>
+          <label for="cards-vampire"><input type="checkbox" id="cards-vampire" name="cards" value="vampire" /> 吸血鬼</label>
+        </fieldset>
+
         <p>
           <label>カウント</label>
           <select id="countupSelect">
+            <option>3</option>
             <option>5</option>
             <option selected="selected">8</option>
             <option>10</option>
@@ -76,49 +94,57 @@
         };
 
         var seeds = {
-          start: [
-            [ 4000, '夜になりました。みなさん、顔を伏せて机を軽く叩いてください。' ]
+          seer: [
+            [ 6000, '占い師は目を覚まし、誰か一人、または、墓地のカード2枚のいずれかを選び、占って下さい。' ]
           ],
-          fortuneteller: {
-            start: [
-              [ 8000, '占い師の方、占い師の方。顔をあげて、誰か一人の正体を占ってください。' ]
-            ],
-            finish: [
-              [ 6000, '占い師の方、顔を伏せてください。' ]
-            ]
-          },
-          wolf: {
-            start: [
-              [ 8000, '狼の方、狼の方。スパイの方、スパイの方。顔をあげて、仲間を確認してください。' ]
-            ],
-            finish: [
-              [ 6000, 'みなさん、顔を伏せてください。' ]
-            ]
-          },
-          thief: {
-            start: [
-              [ 8000, '怪盗の方、怪盗の方。誰かと正体を交換してください。交換後のカードの確認を忘れないようにしてください。' ]
-            ],
-            finish: [
-              [ 6000, '怪盗の方、顔を伏せてください。' ]
-            ]
-          },
+          seerSameWitch: [
+            [ 4000, '占い師は目を覚まし、誰か一人を選び占ってください。' ]
+          ],
+          werewolf: [
+            [ 4000, '人狼は目を覚まし、人狼同士、仲間を確認してください。' ]
+          ],
+          phantomThief: [
+            [ 6000, '怪盗は目を覚まし、誰かの心を盗んで下さい。交換後のカードの確認を忘れずに。' ]
+          ],
+
+          gjHunter: [
+            [ 8000, 'グッジョブハンターは目を覚まし、墓地にあるカードを1枚選んで、ハントしてください。中身は見ません。' ]
+          ],
+          lilWitch: [
+            [ 4000, '魔女っこは目を覚まし、誰か一人を選び占ってください。墓地は選べません。' ]
+          ],
+          wolfKing: [
+            [ 6000, 'おおおおかみは目を覚まし、仲間をみつけ、墓地のカードをすべて確認してください。' ]
+          ],
+          zombie: [
+            [ 8000, 'ゾンビは目を覚まし、墓地のカードを一枚選び、自分のカードを捨ててください。新しいカードを確認して、その役割の仕事を行って下さい。' ]
+          ],
+          vampire: [
+            [ 8000, '吸血鬼は目を覚まし、自分のカードとほかのカードを交換してください。交換したカードの内容を忘れずに確認してください。' ]
+          ],
+
           finish: [
-            [ 4000, '朝になりました。みなさん、目覚めて顔をあげましょう。' ]
+            [ 2000, '顔を伏せてください。' ]
+          ],
+          afterDark: [
+            [ 2000, '夜になりました。みなさん、顔を伏せて机を軽く叩いてください。' ]
+          ],
+          morning: [
+            [ 2000, '朝になりました。みなさん、目覚めて顔をあげましょう。' ]
           ],
           countup: [
-            [ 1500, 'いち' ],
-            [ 1500, 'にい' ],
-            [ 1500, 'さん' ],
-            [ 1500, 'よん' ],
-            [ 1500, 'ごお' ],
-            [ 1500, 'ろく' ],
-            [ 1500, 'なな' ],
-            [ 1500, 'はち' ],
-            [ 1500, 'きゅう' ],
-            [ 1500, 'じゅう' ],
+            [ 1000, 'いち' ],
+            [ 1000, 'にい' ],
+            [ 1000, 'さん' ],
+            [ 1000, 'よん' ],
+            [ 1000, 'ごお' ],
+            [ 1000, 'ろく' ],
+            [ 1000, 'なな' ],
+            [ 1000, 'はち' ],
+            [ 1000, 'きゅう' ],
+            [ 1000, 'じゅう' ],
           ]
-        };
+        }
 
         var nextSpeech = function(scenario, i) {
           if (scenario[i] == undefined) return;
@@ -132,36 +158,54 @@
           }, time, i);
         };
 
-        var buildScenario = function(countup) {
+        var buildScenario = function(countup, cards) {
           var scenario = [];
+          var allCards = [
+            'gjHunter',
+            'seer',
+            'seerSameWitch',
+            'lilWitch',
+            'wolfKing',
+            'werewolf',
+            'zombie',
+            'phantomThief',
+            'vampire'
+          ]
+
           var push = Array.prototype.push;
-          push.apply(scenario, seeds['start']);
+          push.apply(scenario, seeds['afterDark']);
           if (countup > 10) countup = 10;
 
           if (countup <= 0) push.apply(scenario, [[8000, 'カウントは行いません。']]);
           else push.apply(scenario, [[8000, 'カウントは、' + countup + 'までです。']]);
 
-          push.apply(scenario, seeds['fortuneteller']['start']);
-          push.apply(scenario, seeds['countup'].slice(0, countup));
-          push.apply(scenario, seeds['fortuneteller']['finish']);
+          for (i = 0; i < allCards.length; i++) {
+            var card = allCards[i];
+            if (cards.includes(card)) {
+              push.apply(scenario, seeds[card]);
+              push.apply(scenario, seeds['countup'].slice(0, countup));
+              push.apply(scenario, seeds['finish']);
+            }
+          }
 
-          push.apply(scenario, seeds['wolf']['start']);
-          push.apply(scenario, seeds['countup'].slice(0, countup));
-          push.apply(scenario, seeds['wolf']['finish']);
-
-          push.apply(scenario, seeds['thief']['start']);
-          push.apply(scenario, seeds['countup'].slice(0, countup));
-          push.apply(scenario, seeds['thief']['finish']);
-
-          push.apply(scenario, seeds['finish']);
+          push.apply(scenario, seeds['morning']);
 
           return scenario;
         };
 
+        var getCards = function() {
+          var inputs = document.querySelectorAll('input[type=checkbox][name=cards]:checked');
+          var cards = [];
+          var cardsLen = cards.length;
+          for (i=0; i <= cardsLen; i++) cards.push(inputs[i].value);
+          return cards;
+        }
+
         btn.addEventListener('click', function(event) {
           var countup = Number(document.getElementById('countupSelect').value);
-          var scenario = buildScenario(countup);
-          setTimeout(function() { nextSpeech(scenario, 0); }, 1000);
+          var cards = getCards();
+          var scenario = buildScenario(countup, cards);
+          //setTimeout(function() { nextSpeech(scenario, 0); }, 1000);
           event.preventDefault();
         }, false);
     </script>
