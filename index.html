@@ -214,6 +214,7 @@
           console.log(cards);
           var scenario = buildScenario(countup, cards);
           console.log(scenario);
+          speakJP("");
           setTimeout(function() { nextSpeech(scenario, 0); }, 1000);
           event.preventDefault();
         }, false);
